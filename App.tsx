@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Platform, SafeAreaView } from 'react-native';
 import { useState } from 'react';
+import Headxer from './components/Headxer';
 
 export default function App() {
 	const [isWorking, setIsWorking] = useState(false);
@@ -11,7 +12,7 @@ export default function App() {
 		<SafeAreaView style={styles.container}>
 			<View style={{ paddingTop: Platform.OS === 'android' ? 30 : 0 }}>
 				<Text style={styles.title}>Pomodoro</Text>
-				<Text style={styles.title}>{time}</Text>
+				<Headxer time={time} />
 				<StatusBar style='dark' />
 			</View>
 		</SafeAreaView>
