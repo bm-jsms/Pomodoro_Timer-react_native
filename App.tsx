@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Platform, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import Headxer from './components/Headxer';
+import Timer from './components/Timer';
+
 const colors = ['#F7DC6F', '#7de637'];
 
 export default function App() {
@@ -21,14 +23,19 @@ export default function App() {
 				},
 			]}
 		>
-			<View style={{ paddingTop: Platform.OS === 'android' ? 30 : 0 }}>
+			<View
+				style={{
+					paddingHorizontal: 15,
+					paddingTop: Platform.OS === 'android' ? 30 : 0,
+				}}
+			>
 				<Text style={styles.title}>Pomodoro</Text>
-				<Text style={styles.title}>{time}</Text>
 				<Headxer
 					setTime={setTime}
 					currentTime={currentTime}
 					setCurrentTime={setCurrentTime}
 				/>
+				<Timer time={time} />
 				<StatusBar style='dark' />
 			</View>
 		</SafeAreaView>
