@@ -2,14 +2,25 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Platform, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import Headxer from './components/Headxer';
+const colors = ['#F7DC6F', '#7de637'];
 
 export default function App() {
 	const [isWorking, setIsWorking] = useState(false);
 	const [time, setTime] = useState(25 * 60);
-	const [currentTime, setCurrentTime] = useState('Pomo' || 'Short' || 'Long');
+	const [currentTime, setCurrentTime] = useState(
+		'Pomodoro' || 'Short Break' || 'Long Break',
+	);
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView
+			style={[
+				styles.container,
+				{
+					backgroundColor:
+						colors[currentTime === 'Pomodoro' ? 0 : 'Short Break' ? 1 : 2],
+				},
+			]}
+		>
 			<View style={{ paddingTop: Platform.OS === 'android' ? 30 : 0 }}>
 				<Text style={styles.title}>Pomodoro</Text>
 				<Text style={styles.title}>{time}</Text>
@@ -23,7 +34,6 @@ export default function App() {
 		</SafeAreaView>
 	);
 }
-const colors = ['#F7DC6F', '#95fc51', '#EB984E'];
 
 const styles = StyleSheet.create({
 	container: {

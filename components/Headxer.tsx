@@ -27,6 +27,7 @@ const Headxer = ({ setTime, currentTime, setCurrentTime }: HeadxerProps) => {
 						currentTime !== option && {
 							opacity: 0.7,
 							borderColor: 'transparent',
+							backgroundColor: '#F7DC6F',
 						},
 					]}
 				>
@@ -43,8 +44,11 @@ const styles = StyleSheet.create({
 	itemStyle: {
 		borderWidth: 1,
 		borderColor: 'black',
-		borderRadius: 5,
+		borderRadius: 7,
 		padding: 5,
 		width: '33%',
+		marginVertical: 10,
+		alignItems: 'center',
+		backgroundColor: '#f2d21e',
 	},
 });
