@@ -1,5 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Platform, SafeAreaView } from 'react-native';
+import {
+	StyleSheet,
+	Text,
+	View,
+	Platform,
+	SafeAreaView,
+	TouchableOpacity,
+} from 'react-native';
 import { useState } from 'react';
 import Headxer from './components/Headxer';
 import Timer from './components/Timer';
@@ -12,6 +19,10 @@ export default function App() {
 	const [currentTime, setCurrentTime] = useState(
 		'Pomodoro' || 'Short Break' || 'Long Break',
 	);
+	const [isActive, setIsActive] = useState(false);
+	const handleStartStop = () => {
+		setIsActive(!isActive);
+	};
 
 	return (
 		<SafeAreaView
@@ -38,6 +49,18 @@ export default function App() {
 				/>
 				<Timer time={time} />
 
+				<TouchableOpacity style={styles.button} onPress={handleStartStop}>
+					<Text
+						style={{
+							color: 'white',
+							fontSize: 20,
+							fontWeight: 'bold',
+						}}
+					>
+						{isActive ? 'Pause' : 'Start'}
+					</Text>
+				</TouchableOpacity>
+
 				<StatusBar style='dark' />
 			</View>
 		</SafeAreaView>
@@ -51,5 +74,12 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 30,
 		fontWeight: 'bold',
+	},
+	button: {
+		backgroundColor: '#333',
+		padding: 15,
+		marginTop: 15,
+		borderRadius: 10,
+		alignItems: 'center',
 	},
 });
