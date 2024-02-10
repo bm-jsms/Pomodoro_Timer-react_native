@@ -33,6 +33,12 @@ export default function App() {
 			clearInterval(interval);
 		}
 
+		if (time === 0) {
+			setIsActive(false);
+			setIsWorking(prev => !prev);
+			setTime(isWorking ? 5 * 60 : 25 * 60);
+		}
+
 		return () => clearInterval(interval!);
 	}, [isActive, time]);
 
