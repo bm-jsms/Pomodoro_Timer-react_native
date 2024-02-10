@@ -7,7 +7,7 @@ import {
 	SafeAreaView,
 	TouchableOpacity,
 } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Headxer from './components/Headxer';
 import Timer from './components/Timer';
 
@@ -23,6 +23,18 @@ export default function App() {
 	const handleStartStop = () => {
 		setIsActive(!isActive);
 	};
+	useEffect(() => {
+		let interval: NodeJS.Timeout | null | undefined = undefined;
+		if (isActive) {
+			interval = setInterval(() => {
+				setTime(time - 1);
+			}, 1000);
+		} else {
+			clearInterval(interval);
+		}
+
+		return () => clearInterval(interval!);
+	}, [isActive, time]);
 
 	return (
 		<SafeAreaView
