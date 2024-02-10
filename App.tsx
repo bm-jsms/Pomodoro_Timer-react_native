@@ -25,6 +25,7 @@ export default function App() {
 		>
 			<View
 				style={{
+					flex: 1,
 					paddingHorizontal: 15,
 					paddingTop: Platform.OS === 'android' ? 30 : 0,
 				}}
@@ -36,6 +37,7 @@ export default function App() {
 					setCurrentTime={setCurrentTime}
 				/>
 				<Timer time={time} />
+
 				<StatusBar style='dark' />
 			</View>
 		</SafeAreaView>
@@ -45,7 +47,6 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		marginLeft: 8,
 	},
 	title: {
 		fontSize: 30,
